@@ -19,7 +19,26 @@ Plugin 'tpope/vim-fugitive'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+"Plugin 'file:///home/walker/.vim/bundle'
+Bundle 'matrix.vim--Yang'
+Bundle 'taglist.vim'
+Bundle 'grep.vim'
+Bundle 'lookupfile'
+Bundle 'c.vim'
+"Bundle 'stl.vim'
+Bundle 'a.vim'
+"Bundle 'cscope_vim.vim'
+"Bundle 'auto.vim'
+Plugin 'scrooloose/nerdtree' 
+"Plugin 'wlhwai/nerdtree-git-plugin' 
+Bundle 'winmanager' 
+"Bundle 'genutils.vim' 
+Bundle 'STL-improved'
+Bundle 'autoload_cscope.vim'
+Bundle 'genutils'
+
+
+
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -90,7 +109,7 @@ set background=dark
 set showmatch
 
 "显示标尺，就是在右下角显示光标位置
-set ruler
+"set ruler
 
 "去除vi的一致性
 set nocompatible
@@ -100,7 +119,7 @@ set foldenable
 """""""""""""""""设置折叠"""""""""""""""""""""
 "
 "根据语法折叠
-set fdm=syntax
+"set fdm=syntax
 
 "手动折叠
 "set fdm=manual
@@ -129,3 +148,48 @@ set fillchars=vert:/
 set fillchars=stl:/
 
 set fillchars=stlnc:/
+
+
+"taglist
+let Tlist_Show_One_File=1    " 只展示一个文件的taglist
+let Tlist_Exit_OnlyWindow=1  " 当taglist是最后以个窗口时自动退出
+let Tlist_Use_left_Window=1 " 在右边显示taglist窗口
+let Tlist_Sort_Type="name"   " tag按名字排序
+
+
+"ctags
+set tags=./tags;,tags
+
+
+"nerdtree
+" NERDTree settings 
+" 打开vim自动打开目录树
+autocmd vimenter * NERDTree
+" 关闭文件后，如果只剩目录树窗口，则直接关闭
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")) | q | endif
+" F2键开启/关闭目录树
+map <F2> :NERDTreeToggle<cr>
+" 将目录树窗口设置在左边
+let g:NERDTreeWinPos="left"
+" 设置目录树窗口宽度为30
+let g:NERDTreeWinSize=30
+" 显示目录树窗口行号
+let g:NERDTreeShowLineNumbers=1
+
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q <CR>
+
+let g:NERDTree_title='NERD Tree'  
+let g:winManagerWindowLayout='NERDTree|TagList'  
+function! NERDTree_Start()  
+    exec 'NERDTree'  
+endfunction  
+  
+function! NERDTree_IsValid()  
+    return 1  
+endfunction  
+
+
+let Tlist_Auto_Open = 0
+
+"在进入vim时自动打开winmanager   
+let g:AutoOpenWinManager = 1 
