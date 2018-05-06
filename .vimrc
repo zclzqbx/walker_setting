@@ -36,6 +36,8 @@ Bundle 'winmanager'
 Bundle 'STL-improved'
 Bundle 'autoload_cscope.vim'
 Bundle 'genutils'
+Bundle 'OmniCppComplete'
+
 
 
 
