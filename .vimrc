@@ -27,7 +27,7 @@ Bundle 'lookupfile'
 Bundle 'c.vim'
 "Bundle 'stl.vim'
 Bundle 'a.vim'
-"Bundle 'cscope_vim.vim'
+Bundle 'cscope.vim'
 "Bundle 'auto.vim'
 Plugin 'scrooloose/nerdtree' 
 "Plugin 'wlhwai/nerdtree-git-plugin' 
@@ -195,3 +195,31 @@ let Tlist_Auto_Open = 0
 
 "在进入vim时自动打开winmanager   
 let g:AutoOpenWinManager = 1 
+
+" omnicppcomplete
+set completeopt=longest,menu
+let OmniCpp_NamespaceSearch = 2     " search namespaces in the current buffer and in included files
+let OmniCpp_ShowPrototypeInAbbr = 1 " 显示函数参数列表
+let OmniCpp_MayCompleteScope = 1    " 输入 :: 后自动补全
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+
+
+""""""""""""""""""""""""""""""
+" lookupfile setting
+""""""""""""""""""""""""""""""
+let g:LookupFile_MinPatLength = 2               "最少输入2个字符才开始查找
+let g:LookupFile_PreserveLastPattern = 0        "不保存上次查找的字符串
+let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
+let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
+let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
+
+if filereadable("/home/walker/Documents/filenametags")                "设置tag文件的名字
+	let g:LookupFile_TagExpr = '"/home/walker/Documents/filenametags"' 
+endif
+"映射LookupFile为,lk
+nmap <silent> <leader>lk :LUTags<cr>
+"映射LUBufs为,ll
+nmap <silent> <leader>ll :LUBufs<cr>
+"映射LUWalk为,lw
+nmap <silent> <leader>lw :LUWalk<cr>
+
