@@ -27,16 +27,30 @@ Bundle 'lookupfile'
 Bundle 'c.vim'
 "Bundle 'stl.vim'
 Bundle 'a.vim'
-Bundle 'cscope.vim'
+"Bundle 'cscope.vim'
 "Bundle 'auto.vim'
-Plugin 'scrooloose/nerdtree' 
-"Plugin 'wlhwai/nerdtree-git-plugin' 
-Bundle 'winmanager' 
+Plugin 'scrooloose/nerdtree'
+Bundle 'winmanager'
 Bundle 'STL-improved'
 Bundle 'autoload_cscope.vim'
 Bundle 'genutils'
 Bundle 'OmniCppComplete'
-
+Bundle 'autocomplpop'
+"Bundle 'MiniBufExplorer'
+"漂亮的状态栏
+Bundle 'Lokaltog/vim-powerline'
+"快速对齐
+Bundle 'godlygeek/tabular'
+"显示以及去除行尾空格
+Bundle 'bronson/vim-trailing-whitespace'
+"标记高亮
+Bundle 'mbriggs/mark.vim'
+"颜色符号显示对应颜色
+Bundle 'gorodinskiy/vim-coloresque'
+"git支持
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+"buffer管理
+Bundle 'minibufexpl.vim'
 
 
 
@@ -61,7 +75,8 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
+"set mapleader
+let mapleader=","
 set nu
 
 "启动时隐去援助提示
@@ -110,7 +125,7 @@ set background=dark
 set showmatch
 
 "显示标尺，就是在右下角显示光标位置
-"set ruler
+set ruler
 
 "去除vi的一致性
 set nocompatible
@@ -163,7 +178,7 @@ set tags=./tags;,tags
 
 
 "nerdtree
-" NERDTree settings 
+" NERDTree settings
 " 打开vim自动打开目录树
 autocmd vimenter * NERDTree
 " 关闭文件后，如果只剩目录树窗口，则直接关闭
@@ -179,21 +194,21 @@ let g:NERDTreeShowLineNumbers=1
 
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 
-let g:NERDTree_title='NERD Tree'  
-let g:winManagerWindowLayout='NERDTree|TagList'  
-function! NERDTree_Start()  
-    exec 'NERDTree'  
-endfunction  
-  
-function! NERDTree_IsValid()  
-    return 1  
-endfunction  
+let g:NERDTree_title='NERD Tree'
+let g:winManagerWindowLayout='NERDTree|TagList'
+function! NERDTree_Start()
+    exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+    return 1
+endfunction
 
 
 let Tlist_Auto_Open = 0
 
-"在进入vim时自动打开winmanager   
-let g:AutoOpenWinManager = 1 
+"在进入vim时自动打开winmanager
+let g:AutoOpenWinManager = 1
 
 " omnicppcomplete
 set completeopt=longest,menu
@@ -212,8 +227,8 @@ let g:LookupFile_PreservePatternHistory = 1     "保存查找历史
 let g:LookupFile_AlwaysAcceptFirst = 1          "回车打开第一个匹配项目
 let g:LookupFile_AllowNewFiles = 0              "不允许创建不存在的文件
 
-if filereadable("/home/walker/Documents/filenametags")                "设置tag文件的名字
-	let g:LookupFile_TagExpr = '"/home/walker/Documents/filenametags"' 
+if filereadable("/home/walker/filenametags")                "设置tag文件的名字
+	let g:LookupFile_TagExpr = '"/home/walker/filenametags"'
 endif
 "映射LookupFile为,lk
 nmap <silent> <leader>lk :LUTags<cr>
@@ -222,3 +237,16 @@ nmap <silent> <leader>ll :LUBufs<cr>
 "映射LUWalk为,lw
 nmap <silent> <leader>lw :LUWalk<cr>
 
+"omnicppComplete
+set completeopt=menu,menuone
+let OmniCpp_MayCompleteDot=1    "  打开  . 操作符
+let OmniCpp_MayCompleteArrow=1  "打开 -> 操作符
+let OmniCpp_MayCompleteScope=1  "打开 :: 操作符
+let OmniCpp_NamespaceSearch=1   "打开命名空间
+let OmniCpp_GlobalScopeSearch=1
+let OmniCpp_DefaultNamespace=["std"]
+let OmniCpp_ShowPrototypeInAbbr=1  "打开显示函数原型
+let OmniCpp_SelectFirstItem = 2 "自动弹出时自动跳至第一个
+
+nmap wm :WMToggle<cr>
+map <leader><space> :FixWhitespace<cr>
