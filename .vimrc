@@ -188,7 +188,7 @@ map <F2> :NERDTreeToggle<cr>
 " 将目录树窗口设置在左边
 let g:NERDTreeWinPos="left"
 " 设置目录树窗口宽度为30
-let g:NERDTreeWinSize=30
+"let g:NERDTreeWinSize=30
 " 显示目录树窗口行号
 let g:NERDTreeShowLineNumbers=1
 
@@ -250,3 +250,5 @@ let OmniCpp_SelectFirstItem = 2 "自动弹出时自动跳至第一个
 
 nmap wm :WMToggle<cr>
 map <leader><space> :FixWhitespace<cr>
+
+

@@ -8,7 +8,7 @@ https://www.cnblogs.com/youxia/p/linux006.html
 ---
 https://www.zhihu.com/question/19634223
 https://www.linuxidc.com/Linux/2016-06/132262.htm
-
+http://ju.outofmemory.cn/entry/200270
 
 ##vundel using
 ---
