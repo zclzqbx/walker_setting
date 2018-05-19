@@ -17,9 +17,10 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+"Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/walker/.vim/bundle'
+Bundle 'command-t'
 Bundle 'matrix.vim--Yang'
 Bundle 'taglist.vim'
 Bundle 'grep.vim'
@@ -251,4 +252,19 @@ let OmniCpp_SelectFirstItem = 2 "自动弹出时自动跳至第一个
 nmap wm :WMToggle<cr>
 map <leader><space> :FixWhitespace<cr>
 
+
+"cscope
+:cs add ~/Documents/cpp-ethereum/cscope.out ~/Documents/cpp-ethereum/
+:cs add ~/Documents/BigTalkDesignPattern/cscope.out ~/Documents/BigTalkDesignPattern/
+:set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+nmap <C-g>a :cs add cscope.out ./<cr>
+nmap <C-g>s :cs find s <C-R>=expand("<cword>")<cr><cr>
+nmap <C-g>d :cs find g <C-R>=expand("<cword>")<cr><cr>
+nmap <C-g>r :cs find c <C-R>=expand("<cword>")<cr><cr>
+nmap <C-g>t :cs find t <C-R>=expand("<cword>")<cr><cr>
+nmap <C-g>e :cs find e <C-R>=expand("<cword>")<cr><cr>
+nmap <C-g>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
+nmap <C-g>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
+nmap <C-g>c :cs find d <C-R>=expand("<cword>")<cr><cr>
 

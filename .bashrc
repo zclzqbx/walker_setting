@@ -120,6 +120,8 @@ alias g++='g++ -std=c++11'
 alias ..='cd ..'
 alias md="mkdir"
 alias cl="clear"
-alias cc="cd ~/Documents/code"
+alias cc="cd ~/Documents"
 
 export PS1='\[\e[35;1m\]\u\[\e[32;1m\][\[\e[32;1m\]\w]\[\e[34;1m\]\t\[\e[31;1m\]\n$ \e[0m'
+
+alias ct="ctags -R && cscope -Rbq"
