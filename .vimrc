@@ -53,7 +53,22 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
 "buffer管理
 Bundle 'minibufexpl.vim'
 
-
+Plugin 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
+Plugin 'kshenoy/vim-signature' "书签可视化的插件
+Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines' "书签行高亮
+Plugin 'scrooloose/nerdcommenter' "多行注释，leader键+cc生成, leader+cu删除注释
+Plugin 'kien/ctrlp.vim' "搜索历史打开文件，在命令行模式下按ctrl+p触发
+Plugin 'Lokaltog/vim-easymotion' "快速跳转，按两下leader键和f组合
+Plugin 'vim-scripts/ShowTrailingWhitespace.git' "高亮显示行尾的多余空白字符
+Plugin 'vim-scripts/Solarized.git' "主题方案
+Plugin 'nathanaelkane/vim-indent-guides.git' "缩进对齐显示
+Plugin 'vim-scripts/indexer.tar.gz' "自动生成标签
+Plugin 'vim-scripts/DfrankUtil' "indexer 依赖
+Plugin 'vim-scripts/vimprj' "indexer 依赖
+Plugin 'vim-scripts/Markdown'
+Plugin 'tpope/vim-surround'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'scrooloose/syntastic'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -165,7 +180,7 @@ set fillchars=vert:/
 set fillchars=stl:/
 
 set fillchars=stlnc:/
-
+set background=dark
 
 "taglist
 let Tlist_Show_One_File=1    " 只展示一个文件的taglist
