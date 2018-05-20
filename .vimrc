@@ -69,6 +69,7 @@ Plugin 'vim-scripts/Markdown'
 Plugin 'tpope/vim-surround'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'tagbar'
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -200,7 +201,7 @@ autocmd vimenter * NERDTree
 " 关闭文件后，如果只剩目录树窗口，则直接关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree")) | q | endif
 " F2键开启/关闭目录树
-map <F2> :NERDTreeToggle<cr>
+nmap cn :NERDTreeToggle<CR>
 " 将目录树窗口设置在左边
 let g:NERDTreeWinPos="left"
 " 设置目录树窗口宽度为30
@@ -210,21 +211,22 @@ let g:NERDTreeShowLineNumbers=1
 
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q <CR>
 
-let g:NERDTree_title='NERD Tree'
-let g:winManagerWindowLayout='NERDTree|TagList'
-function! NERDTree_Start()
-    exec 'NERDTree'
-endfunction
+"let g:NERDTree_title='NERD Tree'
+"let g:winManagerWindowLayout='NERDTree|TagList'
+"function! NERDTree_Start()
+"    exec 'NERDTree'
+"endfunction
 
-function! NERDTree_IsValid()
-    return 1
-endfunction
+
+"function! NERDTree_IsValid()
+"    return 1
+"endfunction
 
 
 let Tlist_Auto_Open = 0
 
 "在进入vim时自动打开winmanager
-let g:AutoOpenWinManager = 1
+let g:AutoOpenWinManager = 0
 
 " omnicppcomplete
 set completeopt=longest,menu
@@ -283,3 +285,8 @@ nmap <C-g>f :cs find f <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-g>i :cs find i <C-R>=expand("<cfile>")<cr><cr>
 nmap <C-g>c :cs find d <C-R>=expand("<cword>")<cr><cr>
 
+"tagbar
+nmap <Leader>tb :TagbarToggle<CR>
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_width=30
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
