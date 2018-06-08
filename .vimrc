@@ -40,6 +40,7 @@ Bundle 'autocomplpop'
 "Bundle 'MiniBufExplorer'
 "漂亮的状态栏
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-airline'
 "快速对齐
 Bundle 'godlygeek/tabular'
 "显示以及去除行尾空格
@@ -52,7 +53,8 @@ Bundle 'gorodinskiy/vim-coloresque'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
 "buffer管理
 Bundle 'minibufexpl.vim'
-
+"Bundle 'Python-mode'
+Bundle 'UltiSnips'
 Plugin 'octol/vim-cpp-enhanced-highlight' "对c++语法高亮增强
 Plugin 'kshenoy/vim-signature' "书签可视化的插件
 Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines' "书签行高亮
@@ -70,7 +72,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tagbar'
-
+Plugin 'Pydiction'
+Plugin 'jiangmiao/auto-pairs'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -322,3 +325,76 @@ let g:ctrlp_follow_symlinks=1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_auto_jump = 1
+
+"Theme
+color solarized
+
+".hpp .cpp .mk .sh等文件时自动调用SetTitle 函数
+autocmd BufNewFile *.[ch],*.hpp,*.cpp,Makefile,*.mk,*.sh,*.py exec ":call SetTitle()"
+
+" 加入注释
+func SetComment()
+    call setline(1,"/*================================================================")
+    call append(line("."),   "*   Copyright (C) ".strftime("%Y")."Sangfor Ltd. All rights reserved.")
+    call append(line(".")+1, "*   ")
+    call append(line(".")+2, "*   文件名称：".expand("%:t"))
+    call append(line(".")+3, "*   创 建 者：zhuchuanlin")
+    call append(line(".")+4, "*   创建日期：".strftime("%Y年%m月%d日"))
+    call append(line(".")+5, "*   描    述：")
+    call append(line(".")+6, "*")
+    call append(line(".")+7, "================================================================*/")
+    call append(line(".")+8, "")
+    call append(line(".")+9, "")
+endfunc
+
+" 加入shell,Makefile注释
+func SetComment_sh()
+    call setline(3, "#================================================================")
+    call setline(4, "#   Copyright (C) ".strftime("%Y")." Sangfor Ltd.All rights reserved.")
+    call setline(5, "#   ")
+    call setline(6, "#   文件名称：".expand("%:t"))
+    call setline(7, "#   创 建 者：zhuchuanlin")
+    call setline(8, "#   创建日期：".strftime("%Y年%m月%d日"))
+    call setline(9, "#   描    述：")
+    call setline(10,"#")
+    call setline(11,"#================================================================")
+    call setline(12, "")
+    call setline(13, "")
+endfunc
+
+" python header
+func SetPythonHeader()
+    call setline(1, "\#!/usr/bin/env python")
+    call setline(2, "\# -*- coding=utf8 -*-")
+    call setline(3, "\"\"\"")
+    call setline(4, "\# Author: zhuchuanlin")
+    call setline(5, "\# Created Time : ".strftime("%c"))
+    call setline(6, "\# File Name: ".expand("%"))
+    call setline(7, "\# Description:")
+    call setline(8, "\"\"\"")
+    call setline(9, "")
+endfunc
+
+" 定义函数SetTitle，自动插入文件头
+func SetTitle()
+    if &filetype == 'make'
+        call setline(1,"")
+        call setline(2,"")
+        call SetComment_sh()
+    elseif &filetype == 'sh'
+        call setline(1,"#!/usr/bin/bash")
+        call setline(2,"")
+        call SetComment_sh()
+    elseif &filetype == 'python'
+        call SetPythonHeader()
+    endif
+endfunc
+"end
+
+"pydiction
+filetype plugin on
+let g:pydiction_location = '~/.vim/bundle/Pydiction/complete-dict'
+let g:pydiction_menu_height = 20
+
+
+
